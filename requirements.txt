@@ -5,3 +5,4 @@ requests
 Image
 langchain
 google-generativeai
+python-dotenv
