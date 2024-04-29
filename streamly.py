@@ -142,7 +142,7 @@ def on_chat_submit(chat_input, api_key, latest_updates):
         assistant_reply = ""
 
         # Direct Gemini API call
-        assistant_reply = GeminiAPI.send_message(st.secrets["GOOGLE_API_KEY"],st.session_state.conversation_history)
+        assistant_reply = GeminiAPI.send_message(api_key,st.session_state.conversation_history)
         # assistant_reply = GeminiAPI.send_message(messages='Hello Sarthak')
 
         # Append assistant's reply to the conversation history
