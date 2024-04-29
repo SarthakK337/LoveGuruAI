@@ -142,7 +142,7 @@ def on_chat_submit(chat_input, api_key, latest_updates):
         assistant_reply = ""
 
         # Direct Gemini API call
-        assistant_reply = GeminiAPI.send_message(os.environ["GOOGLE_API_KEY"],st.session_state.conversation_history)
+        assistant_reply = GeminiAPI.send_message(st.secrets["GOOGLE_API_KEY"],st.session_state.conversation_history)
         # assistant_reply = GeminiAPI.send_message(messages='Hello Sarthak')
 
         # Append assistant's reply to the conversation history
@@ -235,8 +235,8 @@ def main():
         if st.button("Submit"):
             if chat_input:
                 latest_updates = load_streamlit_updates()
-                GeminiAPI(os.environ["GOOGLE_API_KEY"])
-                on_chat_submit(chat_input, api_key=os.environ["GOOGLE_API_KEY"], latest_updates=latest_updates)
+                GeminiAPI(st.secrets["GOOGLE_API_KEY"])
+                on_chat_submit(chat_input, api_key=st.secrets["GOOGLE_API_KEY"], latest_updates=latest_updates)
 
         # Display chat history with custom avatars
         for message in st.session_state.history[-20:]:
