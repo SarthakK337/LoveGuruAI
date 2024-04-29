@@ -8,9 +8,11 @@ from PIL import Image, ImageEnhance
 import google.generativeai as genai
 # from langchain_google_genai
 import os
+from dotenv import load_dotenv
 
 class GeminiAPI:
   def __init__(self, api_key):
+    load_dotenv()
     genai.configure(api_key=api_key)
 
 
@@ -235,8 +237,8 @@ def main():
         if st.button("Submit"):
             if chat_input:
                 latest_updates = load_streamlit_updates()
-                GeminiAPI(st.secrets["GOOGLE_API_KEY"])
-                on_chat_submit(chat_input, api_key=st.secrets["GOOGLE_API_KEY"], latest_updates=latest_updates)
+                GeminiAPI(os.getenv("GOOGLE_API_KEY"))
+                on_chat_submit(chat_input, api_key=os.getenv("GOOGLE_API_KEY"), latest_updates=latest_updates)
 
         # Display chat history with custom avatars
         for message in st.session_state.history[-20:]:
