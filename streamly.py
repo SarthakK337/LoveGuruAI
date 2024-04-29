@@ -12,7 +12,6 @@ from dotenv import load_dotenv
 
 class GeminiAPI:
   def __init__(self, api_key):
-    load_dotenv()
     genai.configure(api_key=api_key)
 
 
@@ -161,6 +160,7 @@ def on_chat_submit(chat_input, api_key, latest_updates):
         st.error(error_message)
 
 def main():
+    load_dotenv()
     """
     Display Streamlit updates and handle the chat interface.
     """
